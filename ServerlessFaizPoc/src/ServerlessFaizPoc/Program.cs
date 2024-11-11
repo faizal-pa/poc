@@ -8,9 +8,10 @@ builder.Services.AddControllers();
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 
 var app = builder.Build();
+// adding comment to check ci
 
 
-app.UseHttpsRedirection()
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
