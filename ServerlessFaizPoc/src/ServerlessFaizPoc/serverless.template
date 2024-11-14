@@ -5,7 +5,7 @@
   "Parameters": {},
   "Conditions": {},
   "Resources": {
-    "AspNetCoreFunction": {
+    "FaizAdd": {
       "Type": "AWS::Serverless::Function",
       "Properties": {
         "Handler": "ServerlessFaizPoc",
@@ -17,18 +17,62 @@
           "AWSLambdaBasicExecutionRole"
         ],
         "Events": {
-          "ProxyResource": {
-            "Type": "Api",
-            "Properties": {
-              "Path": "/{proxy+}",
-              "Method": "ANY"
-            }
-          },
           "RootResource": {
             "Type": "Api",
             "Properties": {
-              "Path": "/",
-              "Method": "ANY"
+              "Path": "/calculator/add/{x}/{y}",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "FaizSub": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "ServerlessFaizPoc",
+        "Runtime": "dotnet8",
+        "CodeUri": "",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "Events": {
+          "RootResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/calculator/subtract/{x}/{y}",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "FaizValue": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "ServerlessFaizPoc",
+        "Runtime": "dotnet8",
+        "CodeUri": "",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "Events": {
+          "ValueRoot": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/value",
+              "Method": "GET"
+            }
+          },
+          "ValueProxy": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/value/{proxy+}",
+              "Method": "GET"
             }
           }
         }

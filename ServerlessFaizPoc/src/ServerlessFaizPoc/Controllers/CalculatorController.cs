@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ServerlessFaizPoc.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("[controller]")]
     public class CalculatorController : ControllerBase
     {
         private readonly ILogger<CalculatorController> _logger;
