@@ -6,6 +6,7 @@ on:
       environment:
         type: environment
         description: Select the environment to deploy to
+        default: "Development"
       project:
         description: The project to deploy
         required: true
