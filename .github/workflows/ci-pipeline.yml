@@ -43,7 +43,7 @@ jobs:
           # develop branch is development environment
           case "${{ github.ref }}" in
             refs/heads/main)
-              echo "name-of-environment=Production" >> $GITHUB_OUTPUT
+              echo "name-of-environment=Development" >> $GITHUB_OUTPUT
               ;;
             refs/heads/staging)
               echo "name-of-environment=Staging" >> $GITHUB_OUTPUT
