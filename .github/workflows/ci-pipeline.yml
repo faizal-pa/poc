@@ -43,7 +43,7 @@ jobs:
           # develop branch is development environment
           case "${{ github.ref }}" in
             refs/heads/main)
-              echo "name-of-environment=Development" >> $GITHUB_OUTPUT
+              echo "name-of-environment=Dev" >> $GITHUB_OUTPUT
               ;;
             refs/heads/staging)
               echo "name-of-environment=Staging" >> $GITHUB_OUTPUT
@@ -69,7 +69,7 @@ jobs:
     name: Display Environment Variables
     runs-on: ubuntu-latest
     needs: preflight
-    environment: Development
+    environment: ${{ github.event.inputs.environment || needs.preflight.outputs.environment }}
 
     # These permissions are required to restore from GitHub Packages
     permissions:
