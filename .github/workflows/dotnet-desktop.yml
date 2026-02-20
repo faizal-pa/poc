@@ -1,0 +1,18 @@
+# This workflow applies database migrations to the specified environment when triggered manually.
+name : Apply DB Migration2
+
+# The workflow_dispatch event allows you to run the workflow manually and select the environment to apply the DB migration to.
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                type: environment
+                description: Select the environment to apply the DB migration to
+                default: dev
+
+# This job will apply the database migration to the specified environment
+jobs:
+  apply-migration:
+    name: Apply DB Migration
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
