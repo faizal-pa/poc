@@ -1,0 +1,16 @@
+name: Apply DB Migrationss
+
+on:
+  workflow_dispatch:
+        inputs:
+            environment:
+                type: environment
+                description: Select the environment to apply the DB migration to
+                default: dev
+
+jobs:
+  apply-migration:
+    name: Apply DB Migration
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+  
