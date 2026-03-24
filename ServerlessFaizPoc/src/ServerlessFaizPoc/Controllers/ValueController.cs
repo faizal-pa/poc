@@ -10,7 +10,7 @@ namespace ServerlessFaizPoc.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Hello World sss wwww");
+            return Ok("Hello World");
         }
 
         [HttpGet("{id}")]
